@@ -1,2 +1,2 @@
 # frontend-lab2
-HTML and CSS for Frontend course lab 2 at HKR
+HTML, CSS and JavaScript for Frontend course lab 2 at HKR
