@@ -1,0 +1,42 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Trebuchet MS';
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+
+    background-color: gray;
+}
+
+header nav{
+    margin-right: 50px;
+}
+
+header nav a{
+    text-decoration: none;
+    margin: 0 25px;
+}
+
+header nav a:hover{
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+}
+
+.post{
+    margin-top: 50px;
+    width: 600px;
+}
