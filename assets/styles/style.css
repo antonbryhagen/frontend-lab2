@@ -99,6 +99,24 @@ main{
 .comment-author{
     text-decoration: underline;
     text-underline-offset: 2px;
+    margin-bottom: 2px;
+}
+
+.comment-body{
+    margin-bottom: 7px;
+}
+
+#profile-container{
+    margin-top: 100px;
+}
+
+#profile-container img{
+    height: 200px;
+    width: 200px;
+}
+
+#profile-container h2{
+    margin-top: 20px;
 }
 
 
@@ -147,5 +165,9 @@ main{
     article.post{
         width: 50%;
         /* margin: 0 auto; */
+    }
+
+    .post-author:hover{
+        cursor: pointer;
     }
 }
