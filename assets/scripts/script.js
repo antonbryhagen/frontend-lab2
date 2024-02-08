@@ -2,23 +2,16 @@ function displayMenu(){
     const menuIcon = document.getElementById("menuIcon");
     const navigation = document.getElementsByTagName("nav");
     const h1 = document.getElementsByTagName("h1");
-    // const header = document.getElementsByTagName("header");
     const anchors = document.querySelectorAll("a.nav-link");
 
     const closeIconPath = "assets/images/closeicon.svg";
     const menuIconPath = "assets/images/menuicon.svg";
-
-    
 
     if(menuIcon.getAttribute("src") === menuIconPath){
         menuIcon.src = closeIconPath;
     }else{
         menuIcon.src = menuIconPath;
     }
-
-    // Array.from(header).forEach((header) => {
-    //     header.classList.toggle("open");
-    // });
     Array.from(navigation).forEach((nav) => {
         nav.classList.toggle("open");
     });
@@ -28,7 +21,6 @@ function displayMenu(){
     anchors.forEach((anchor) => {
         anchor.classList.toggle("show");
     });
-
 }
 
 async function fetchPostsAndComments(){
@@ -37,9 +29,9 @@ async function fetchPostsAndComments(){
 
     try{
         const [postResponse, commentResponse, userResponse] = await Promise.all([
-            fetch("https://dummyjson.com/posts?skip=0&limit=150"),
-            fetch("https://dummyjson.com/comments?skip=0&limit=340"),
-            fetch("https://dummyjson.com/users?skip=0&limit=100")
+            fetch("https://dummyjson.com/posts?limit=150"),
+            fetch("https://dummyjson.com/comments?limit=340"),
+            fetch("https://dummyjson.com/users?limit=100")
         ]);
 
         const posts = await postResponse.json();
