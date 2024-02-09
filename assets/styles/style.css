@@ -53,6 +53,11 @@ ul li:first-child a.show{
     width: 100%;
 }
 
+ul li a.active{
+    text-decoration: underline;
+    text-underline-offset: 6px;
+}
+
 
 #menuIcon{
     width: 40px;
@@ -68,7 +73,6 @@ main{
 .post{
     margin-top: 50px;
     padding: 10px;
-    border-top: 1px solid rgb(200, 200, 200);
     border-bottom: 1px solid rgb(200, 200, 200);
 }
 
@@ -83,6 +87,9 @@ main{
 .post-info{
     display: flex;
     justify-content: space-between;
+}
+
+.post-author span{
     text-decoration: underline;
     text-underline-offset: 2px;
 }
@@ -119,7 +126,83 @@ main{
     margin-top: 20px;
 }
 
+#index-main{
+    margin: 0 auto;
+    width: 90%;
+}
 
+#index-main section:first-child{
+    margin-top: 20px;
+}
+#index-main section{
+    margin-bottom: 40px;
+}
+
+#contact-main h2{
+    margin: 40px 0;
+}
+
+#contact-main form{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+#contact-form input{
+    height: 30px;
+}
+
+#contact-main form div{
+    margin-bottom: 10px;
+}
+
+#contact-main form div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#contact-main form div input{
+    margin: 0;
+}
+
+#contact-main #confirm{
+    margin-left: 10px;
+}
+
+#contact-main input{
+    margin-bottom: 20px;
+}
+
+#contact-main textarea{
+    margin-bottom: 20px;
+    resize: none;
+}
+
+#contact-main #button{
+    color: black;
+    background-color: white;
+    border: solid black 1px;
+    margin: 0;
+}
+
+@media screen and (min-width: 500px){
+    article.post{
+        width: 70%;
+    }
+
+    #index-main{
+        width: 50%;
+    }
+    #index-main section:first-child{
+        margin-top: 80px;
+    }
+
+    #contact-main form{
+        width: 400px;
+    }
+}
 
 @media screen and (min-width: 768px){
     header{
@@ -164,10 +247,18 @@ main{
 
     article.post{
         width: 50%;
-        /* margin: 0 auto; */
     }
 
-    .post-author:hover{
+    .post-author span:hover{
+        cursor: pointer;
+    }
+
+    .comment-author:hover{
+        cursor: pointer;
+    }
+
+    #contact-main #button:hover{
+        background-color: rgb(211, 211, 211);
         cursor: pointer;
     }
 }

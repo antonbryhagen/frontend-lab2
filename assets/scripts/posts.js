@@ -1,28 +1,3 @@
-function displayMenu(){
-    const menuIcon = document.getElementById("menuIcon");
-    const navigation = document.getElementsByTagName("nav");
-    const h1 = document.getElementsByTagName("h1");
-    const anchors = document.querySelectorAll("a.nav-link");
-
-    const closeIconPath = "assets/images/closeicon.svg";
-    const menuIconPath = "assets/images/menuicon.svg";
-
-    if(menuIcon.getAttribute("src") === menuIconPath){
-        menuIcon.src = closeIconPath;
-    }else{
-        menuIcon.src = menuIconPath;
-    }
-    Array.from(navigation).forEach((nav) => {
-        nav.classList.toggle("open");
-    });
-    Array.from(h1).forEach((h1) => {
-        h1.classList.toggle("hide");
-    });
-    anchors.forEach((anchor) => {
-        anchor.classList.toggle("show");
-    });
-}
-
 async function fetchPostsAndComments(){
 
     let postsList = [];
@@ -37,8 +12,6 @@ async function fetchPostsAndComments(){
         const posts = await postResponse.json();
         const comments = await commentResponse.json();
         const users = await userResponse.json();
-
-        // console.log(posts);
 
         posts.posts.forEach((post) => {
             postsList.push(createPost(post.id, post.title, post.body, post.userId, users.users.filter(id => id.id === post.userId)[0].username, post.tags, post.reactions, comments.comments.filter(id => id.postId === post.id)));
@@ -62,7 +35,7 @@ function createPost(id, title, body, userId, userName, tags, reactions, comments
         "comments": []
     };
 
-    comments.forEach((comment) => { //måste man ha parantes runt parameter?
+    comments.forEach((comment) => { 
         post.comments.push({
             "id": comment.id,
             "body": comment.body,
@@ -83,9 +56,6 @@ let posts = "";
 
 finalPostList.then((postList) => {
     posts = postList;
-    // postList.forEach(element =>{
-    //     console.log(element);
-    // })
     displayPosts(currentPage);
 });
 
@@ -124,12 +94,16 @@ function displayPosts(page){
         postContentSection.appendChild(infoDiv);
 
         let postAuthorP = document.createElement("p");
-        postAuthorP.innerText = `Posted by ${post.userName}`;
+        postAuthorP.innerText = `Posted by `;
         postAuthorP.classList.add("post-author");
-        postAuthorP.addEventListener("click", function(){
+        let postAuthorSpan = document.createElement("span");
+        postAuthorSpan.innerText = post.userName;
+        
+        postAuthorSpan.addEventListener("click", function(){
             window.location.href = `profile.html?userId=${post.userId}`;
         });
         infoDiv.appendChild(postAuthorP);
+        postAuthorP.appendChild(postAuthorSpan);
 
         let postReactionsP = document.createElement("p");
         postReactionsP.innerText = `${post.reactions} reactions`;
@@ -148,6 +122,9 @@ function displayPosts(page){
             let commentAuthorP = document.createElement("p");
             commentAuthorP.innerText = comment.user.userName;
             commentAuthorP.classList.add("comment-author");
+            commentAuthorP.addEventListener("click", function(){
+                window.location.href = `profile.html?userId=${comment.user.id}`;
+            });
             postCommentSection.appendChild(commentAuthorP);
 
             let commentBodyP = document.createElement("p");
@@ -183,37 +160,3 @@ function setUpInfiniteScroll(){
 }
 
 setUpInfiniteScroll();
-
-
-function displayProfile(){
-
-    const urlParms = new URLSearchParams(window.location.search);
-    const userId = urlParms.get('userId');
-
-    fetch(`https://dummyjson.com/users/${userId}`)
-        .then(response => response.json())
-        .then(data => {
-            const profileContainer = document.getElementById("profile-container")
-            let profileFragment = document.createDocumentFragment();
-        
-            let profileImg = document.createElement("img");
-            profileImg.src = data.image;
-            profileImg.alt = `Profile picture for user ${data.username}`;
-            profileFragment.appendChild(profileImg);
-        
-            let profileH2 = document.createElement("h2");
-            profileH2.innerText = `${data.firstName} ${data.lastName}`;
-            profileFragment.appendChild(profileH2);
-        
-            let profileH3 = document.createElement("h3");
-            profileH3.innerText = `@${data.username}`;
-            profileFragment.appendChild(profileH3);
-        
-            profileContainer.appendChild(profileFragment);
-        })
-        .catch(error => console.error("Error", error));
-
-    
-}
-
-displayProfile();

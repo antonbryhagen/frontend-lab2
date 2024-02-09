@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <title>Contact us</title>
+</head>
+<body>
+    <header>
+        <h1>Texterly</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="posts.html" class="nav-link">Posts</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact Us</a></li>
+            </ul>
+            <img id="menuIcon" src="assets/images/menuicon.svg" alt="Hamburger menu icon" onclick="displayMenu()">
+            
+        </nav>
+    </header>
+
+    <main id="contact-main">
+        <h2>Contact form</h2>
+        <form action="" id="contact-form">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name">
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email">
+
+            <label for="message">Write your message here</label>
+            <textarea name="message" id="message" cols="30" rows="10"></textarea>
+
+            <div>
+                <label for="confirm">Confirm to send</label>
+                <input type="checkbox" name="confirm" id="confirm">
+            </div>
+            <input type="button" name="confirm-btn" id="button" value="Send">
+
+        </form>
+
+    </main>
+    <script src="assets/scripts/menu.js"></script>
+</body>
+</html>
