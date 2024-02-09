@@ -13,6 +13,8 @@ header{
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    background-color: rgb(42, 42, 147);
+    color: white;
 }
 
 header h1.hide{
@@ -30,7 +32,7 @@ nav.open{
 
 header nav a{
     display: none;
-    color: black;
+    color: white;
 }
 
 header nav ul{
@@ -62,6 +64,7 @@ ul li a.active{
 #menuIcon{
     width: 40px;
     height: 40px;
+    filter: invert(92%) sepia(96%) saturate(2%) hue-rotate(315deg) brightness(107%) contrast(100%);
 }
 
 main{
@@ -185,6 +188,7 @@ main{
     background-color: white;
     border: solid black 1px;
     margin: 0;
+    padding: 10px;
 }
 
 @media screen and (min-width: 500px){
